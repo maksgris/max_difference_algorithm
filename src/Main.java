@@ -33,24 +33,38 @@ public class Main {
 
         Enumeration<? extends ZipEntry> entries = zipFile.entries();
 
-        if (entries.hasMoreElements()) {
-            ZipEntry entry = entries.nextElement();
-            InputStream stream = zipFile.getInputStream(entry);
-            Scanner scanner = new Scanner(stream);
-            ArrayList<Integer> numbers = new ArrayList<>();
-            while (scanner.hasNextInt())
-                numbers.add(scanner.nextInt());
+        // User input for file's number
+        Scanner inputScanner = new Scanner(System.in);
+        System.out.println("Which file you want to read numbers from? (1 - 7)");
 
-
-            System.out.println("Maximum difference in an array is = " + maxDiff(numbers) + "\n");
-
-
-            /*for (int number : numbers)
-                System.out.print(number + " ");*/
-
-
-            stream.close();
+        ArrayList<ZipEntry> zipEntries = new ArrayList<>();
+        int i = 1;
+        while (entries.hasMoreElements()) {
+            zipEntries.add(entries.nextElement());
+            System.out.println(i + ". " + zipEntries.get(i-1).getName());
+            i++;
         }
+        int fileNum = inputScanner.nextInt();
+
+        // Zipped file to stream
+        InputStream stream = zipFile.getInputStream(zipEntries.get(fileNum-1));
+
+        // Stores numbers from stream to arraylist
+        Scanner scanner = new Scanner(stream);
+        ArrayList<Integer> numbers = new ArrayList<>();
+        while (scanner.hasNextInt())
+            numbers.add(scanner.nextInt());
+
+        // Outputs maximum difference
+        System.out.println("\nMaximum difference in an array is = " + maxDiff(numbers) + "\n");
+
+
+            for (int number : numbers)
+                System.out.print(number + " ");
+
+
+        stream.close();
+
 
     }
 }
