@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="max_difference_algorithm:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/max_difference_algorithm_jar</output-path>
+    <root id="archive" name="max_difference_algorithm.jar">
+      <element id="module-output" name="max_difference_algorithm" />
+    </root>
+  </artifact>
+</component>

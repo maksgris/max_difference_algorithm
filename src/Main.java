@@ -12,7 +12,7 @@ public class Main {
 
     static {
         try {
-            zipFile = new ZipFile("S:/Java Projects/max_difference_algorithm/src/pd1_data.zip");
+            zipFile = new ZipFile("src/pd1_data.zip");
         } catch (IOException e) {
             e.printStackTrace();
         }
